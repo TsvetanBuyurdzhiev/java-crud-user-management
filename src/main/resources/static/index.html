@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>User Management</h1>
+
+<!-- Create New User Form -->
+<div>
+  <h2>Create New User</h2>
+  <form id="create-user-form">
+    <label for="first-name">First Name:</label>
+    <input type="text" id="first-name" required><br>
+
+    <label for="last-name">Last Name:</label>
+    <input type="text" id="last-name" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br>
+
+    <label for="phone-number">Phone Number:</label>
+    <input type="text" id="phone-number" required><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" required><br>
+
+    <button type="submit">Create User</button>
+  </form>
+</div>
+
+<hr>
+
+<!-- Search by First or Last Name -->
+<div>
+  <label for="search-term">Search by First or Last Name:</label>
+  <input type="text" id="search-term" placeholder="Enter search term">
+  <button onclick="searchUsers()">Search by First or Last Name</button>
+</div>
+
+<hr>
+
+<!-- Button to Print All Users -->
+<div>
+  <button onclick="getAllUsers()">Print All Users</button>
+</div>
+
+<hr>
+
+<!-- Section to Display Search Results or All Users -->
+<div id="results-container">
+  <h2>Results:</h2>
+  <div id="users-list">
+    <!-- Users will be displayed here -->
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
