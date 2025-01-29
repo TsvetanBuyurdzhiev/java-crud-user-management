@@ -4,6 +4,7 @@ package com.example.javaTaskCRUD.controller;
 import com.example.javaTaskCRUD.model.User;
 import com.example.javaTaskCRUD.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
@@ -68,5 +69,13 @@ public class UserController {
             @Parameter(description = "ID of the user to be deleted")@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @Operation(summary = "Get users with pagination", description = "Retrieve a paginated list of users")
+    @GetMapping("/paginated")
+    public ResponseEntity<Page<User>> getUsersWithPagination(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return ResponseEntity.ok(userService.getUsersWithPagination(page, size));
     }
 }

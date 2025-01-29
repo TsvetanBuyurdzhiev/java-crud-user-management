@@ -9,10 +9,16 @@
 <body>
 <h1>User Management</h1>
 
+<!-- Initial Options -->
+<div id="initial-page">
+  <button id="create-button" onclick="showCreateForm()">Create User</button>
+  <button id="edit-button" onclick="showEditForm()">Edit User</button>
+</div>
+
 <!-- Create New User Form -->
-<div>
+<div id="create-user-section" style="display: none;">
   <h2>Create New User</h2>
-  <form id="create-user-form">
+  <form id="create-user-form" onsubmit="createUser(event)">
     <label for="first-name">First Name:</label>
     <input type="text" id="first-name" required><br>
 
@@ -28,29 +34,47 @@
     <label for="dob">Date of Birth:</label>
     <input type="date" id="dob" required><br>
 
-    <button type="submit">Create User</button>
+    <button type="submit">Save User</button>
+    <button type="button" onclick="cancelAction()">Cancel</button>
   </form>
 </div>
 
-<hr>
+<!-- Edit User Form -->
+<div id="edit-user-section" style="display: none;">
+  <h2>Edit User</h2>
+  <form id="edit-user-form" onsubmit="editUser(event)">
+    <label for="user-id">User ID:</label>
+    <input type="text" id="user-id" required><br>
 
-<!-- Search by First or Last Name -->
-<div>
-  <label for="search-term">Search by First or Last Name:</label>
-  <input type="text" id="search-term" placeholder="Enter search term">
-  <button onclick="searchUsers()">Search by First or Last Name</button>
+    <label for="edit-first-name">First Name:</label>
+    <input type="text" id="edit-first-name"><br>
+
+    <label for="edit-last-name">Last Name:</label>
+    <input type="text" id="edit-last-name"><br>
+
+    <label for="edit-email">Email:</label>
+    <input type="email" id="edit-email"><br>
+
+    <label for="edit-phone-number">Phone Number:</label>
+    <input type="text" id="edit-phone-number"><br>
+
+    <label for="edit-dob">Date of Birth:</label>
+    <input type="date" id="edit-dob"><br>
+
+    <button type="submit">Save Changes</button>
+    <button type="button" onclick="cancelAction()">Cancel</button>
+  </form>
 </div>
 
-<hr>
-
-<!-- Button to Print All Users -->
-<div>
+<!-- Section to Display Search and Print All -->
+<div id="search-section">
+  <label for="search-term">Search by First or Last Name:</label>
+  <input type="text" id="search-term" placeholder="Enter search term">
+  <button onclick="searchUsers()">Search</button>
   <button onclick="getAllUsers()">Print All Users</button>
 </div>
 
-<hr>
-
-<!-- Section to Display Search Results or All Users -->
+<!-- Results Section -->
 <div id="results-container">
   <h2>Results:</h2>
   <div id="users-list">

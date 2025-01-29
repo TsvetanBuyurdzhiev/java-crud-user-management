@@ -3,6 +3,8 @@ package com.example.javaTaskCRUD.service;
 import com.example.javaTaskCRUD.exception.ResourceNotFoundException;
 import com.example.javaTaskCRUD.model.User;
 import com.example.javaTaskCRUD.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -46,5 +48,9 @@ public class UserService {
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public Page<User> getUsersWithPagination(int page, int size) {
+        return userRepository.findAll(PageRequest.of(page, size));
     }
 }
