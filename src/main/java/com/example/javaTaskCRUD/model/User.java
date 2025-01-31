@@ -1,7 +1,10 @@
 package com.example.javaTaskCRUD.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -24,7 +27,8 @@ public class User {
     private String phoneNumber;
 
     @Column(nullable = false)
-    private String dateOfBirth;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate dateOfBirth;
 
     public Long getId() {
         return id;
@@ -66,11 +70,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }
